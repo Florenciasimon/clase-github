@@ -1,0 +1,101 @@
+/* reset */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* estilos genericos: colores de fondo, tipografias, que se repita en todo el proyecto */
+
+body{
+    background-color: #0e0d0d;
+}
+
+
+/* estilos de header */
+
+header{
+    display: flex;   /* para que funcione como linea */
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+/* estilos del menu */
+
+/* ruta de especificidad */
+header nav ul{
+    color: whitesmoke;
+    list-style: none;
+    display: flex;
+    gap: 1.5rem; /* para separar los li */
+}
+
+/* estilos de main */
+
+main{
+    height: 70vh; /* para que ocupe el 65% de pantalla y el 35% restante quede para header y footer */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3,25%); /* 3 filas que ocupen el 30% de su 100% */
+    gap: 2rem;
+    margin: 3rem 2rem 3rem 2rem;
+    align-content: center;
+}
+
+main .img-dos, .img-cinco{
+    display: none; /* ocultar elementos */
+}
+
+main div img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* para que la imagen ocupe el tamaño del contenedor */
+}
+
+
+/* estilos de footer */
+
+footer{
+    color: whitesmoke;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+
+/* mediaqueris(mq) de tablet */ /* solo aplicar estilos que queremos que cambien */
+
+@media screen and (min-width:600px){
+    main{
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 50%);
+    }
+    main .img-cuatro{
+        grid-column: span 2; /* para que ocupe 2 columnas */
+    }
+}
+
+/* mq de desktop */
+
+@media screen and (min-width:1024px){
+    main .img-dos, .img-cinco{    /* para que las imagenes ocultas, queden visibles */
+        display: block;
+    }
+    main{
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 40% 40% 20%;
+    }
+
+    main .img-uno, .img-tres{
+        grid-row: span 2;
+    }
+
+    main .img-cuatro, .img-dos{  /* a veces puede ocurrir que tengamos que repetir main despues de la coma */
+        grid-column: span 1;
+    }
+
+    main .img-cinco{
+        grid-column: span 3;
+    }
+}
